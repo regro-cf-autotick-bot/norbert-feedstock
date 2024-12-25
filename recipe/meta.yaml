@@ -10,20 +10,22 @@ source:
   sha256: bd4cbc2527f0550b81bf4265c1a64b352cab7f71e4e3c823d30b71a7368de74e
 
 build:
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . -vv"
   noarch: python
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - scipy
     - setuptools
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - norbert
 
